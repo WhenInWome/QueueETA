@@ -341,7 +341,7 @@ static void on_alert_typed(int32_t v) {
 static void menu_pick(int index, void *ctx) {
   window_stack_pop(true);  // closes the menu
   if (index == 0) {
-    grid_push("QUEUE POSITION (logs it)", s_meta.current, on_position_typed);
+    grid_push("NEW QUEUE POSITION", s_meta.current, on_position_typed);
   } else if (index == 1) {
     grid_push("ALERT MIN BEFORE (0=off)", s_set.alert_min, on_alert_typed);
   } else {
@@ -395,7 +395,7 @@ static void touch_handler(const TouchEvent *e, void *ctx) {
   if (e->type != TouchEvent_Touchdown || window_stack_get_top_window() != s_window) return;
   GRect nf = layer_get_frame(text_layer_get_layer(s_number));
   if (e->y < nf.origin.y + nf.size.h) {
-    grid_push("QUEUE POSITION (logs it)", 0, on_position_typed);  // start cleared
+    grid_push("NEW QUEUE POSITION", 0, on_position_typed);  // start cleared
   }
 }
 
